@@ -75,6 +75,24 @@ public class FakultasController {
         return new ModelAndView("redirect:/fakultas");
     }
 
+    @GetMapping("/delete/{id}")
+    public ModelAndView delete(@PathVariable String id) {
+        ModelAndView mav = new ModelAndView("pages/master/fakultas/delete");
+        FakultasRes result = fakultasService.getById(id).orElse(null);
+        if (result != null) {
+            mav.addObject("fakultas", result);
+            return mav;
+        }
+
+        return new ModelAndView("pages/auth/error-404");
+    }
+
+    @PostMapping("/remove")
+    public ModelAndView remove(@ModelAttribute FakultasReq request) {
+        fakultasService.delete(request.getId());
+        return new ModelAndView("redirect:/fakultas");
+    }
+
 //    @GetMapping("/data")
 //    public ResponseEntity<Response> data(){
 //        List<FakultasRes> result = fakultasService.get();
