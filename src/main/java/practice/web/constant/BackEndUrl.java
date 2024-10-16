@@ -16,4 +16,16 @@ public class BackEndUrl {
     public String fakultasUrl() {
         return Strings.concat(baseUrl, "/fakultas");
     }
+
+    public String majorsUrl() {
+        return Strings.concat(baseUrl, "/majors");
+    }
+
+    public String studentUrl() {
+        return Strings.concat(baseUrl, "/student");
+    }
+
+    public String courseUrl() {
+        return Strings.concat(baseUrl, "/course");
+    }
 }

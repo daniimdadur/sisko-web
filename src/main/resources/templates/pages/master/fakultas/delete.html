@@ -13,12 +13,31 @@
                 <div class="mb-3">
                     <input type="hidden" id="id" name="id" th:value="${fakultas.id}">
                     <label for="code" class="form-label">Code</label>
-                    <input type="text" id="code" class="form-control" name="code" th:value="${fakultas.code}">
+                    <input type="text" id="code" class="form-control" name="code" th:value="${fakultas.code}" readonly>
                 </div>
                 <div class="mb-3">
                     <label for="name" class="form-label">Fakultas Name</label>
-                    <input type="text" id="name" class="form-control" name="name" th:value="${fakultas.name}">
+                    <input type="text" id="name" class="form-control" name="name" th:value="${fakultas.name}" readonly>
                 </div>
+                <h5 class="mt-2">Majors List</h5>
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <th>No</th>
+                            <th>Code</th>
+                            <th>Name</th>
+                            <th>Fakultas Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="majors, stat : ${fakultas.majorsList}">
+                            <th scope="row" th:text="${stat.index + 1}"></th>
+                            <td th:text="${majors.code}"></td>
+                            <td th:text="${majors.name}"></td>
+                            <td th:text="${majors.fakultasName}"></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             <div class="d-flex justify-content-end mb-3 me-3">
                 <button type="submit" class="btn btn-outline-danger me-2">
